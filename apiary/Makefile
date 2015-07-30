@@ -62,8 +62,8 @@ $(CPA_BLUEPRINT): outdir cpa.apib
 #	apiary fetch --api-name=$(CMA_APIARY_NAME) >$(CMA_BLUEPRINT)
 
 prepare: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
-	$(DRAFTER) $^|jq -e '.warnings | length == 0' >/dev/null || \
-		$(DRAFTER) $^|jq -e '.warnings'
+	$(DRAFTER) $^ #|jq -e '.warnings | length == 0' >/dev/null || \
+		#$(DRAFTER) $^|jq -e '.warnings'
 
 preview: check_apiary_token prepare
 	$(APIARY) preview --path=$(CDA_BLUEPRINT)
