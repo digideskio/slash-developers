@@ -17,6 +17,7 @@ IMAGES_HOST=https://images.contentful.com
 DREDD=node_modules/.bin/dredd
 HERCULE=node_modules/.bin/hercule
 APIARY=bundle exec apiary
+DRAFTER=./node_modules/dredd/node_modules/.bin/drafter
 
 .PHONY: all outdir clean fetch preview test install prepare check_ci_var check_apiary_token check_cma_token notify_slack publish publish_docs
 
@@ -31,6 +32,9 @@ clean:
 install:
 	@if [ ! -f $(DREDD) ] || [ ! -f $(HERCULE) ]; then \
 		npm install; \
+	fi
+	@if [ -z "`which jq`" ]; then \
+		brew install jq; \
 	fi
 	@$$(bundle show apiaryio > /dev/null); \
 	if [ $$? != 0 ]; then \
@@ -58,6 +62,8 @@ $(CPA_BLUEPRINT): outdir cpa.apib
 #	apiary fetch --api-name=$(CMA_APIARY_NAME) >$(CMA_BLUEPRINT)
 
 prepare: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
+	$(DRAFTER) $^|jq -e '.warnings | length == 0' >/dev/null || \
+		$(DRAFTER) $^|jq -e '.warnings'
 
 preview: check_apiary_token prepare
 	$(APIARY) preview --path=$(CDA_BLUEPRINT)
