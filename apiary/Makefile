@@ -17,7 +17,7 @@ IMAGES_HOST=https://images.contentful.com
 DREDD=node_modules/.bin/dredd
 HERCULE=node_modules/.bin/hercule
 APIARY=bundle exec apiary
-DRAFTER=drafter
+DRAFTER=/usr/local/bin/drafter
 
 .PHONY: all outdir clean fetch preview test install prepare check_ci_var check_apiary_token check_cma_token notify_slack publish publish_docs
 
@@ -37,7 +37,7 @@ install:
 		brew install jq; \
 	fi
 	@if [ -z "`which $(DRAFTER)`" ]; then \
-		brew install drafter; \
+		brew install --HEAD drafter; \
 	fi
 	@$$(bundle show apiaryio > /dev/null); \
 	if [ $$? != 0 ]; then \
