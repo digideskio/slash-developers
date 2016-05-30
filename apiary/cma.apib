@@ -752,7 +752,11 @@ An asset can only be archived when it's not published.
 # Group Locales
 
 Locales allow the definition of translated content for both assets and entries. A locale
-consists mainly of a name and a locale code.
+consists mainly of the following properties:
+
+- `name`, a human readable identifier for a locale. For example: "British English"
+- `code`, an identifier that will be used to differentiate translated content in the API responses. For example: 'en-GB'
+- `fallback_code`, the code of the locale to use in case there is no translated content for the requested one. For example: 'en-US'
 
 ## Locale collection [/spaces/{space_key}/locales]
 
@@ -762,7 +766,7 @@ consists mainly of a name and a locale code.
 ### Get all locales of a space [GET]
 
 The locale collection endpoint returns a list of all the created locales. One of those
-will have the flag `default` set to true and is the locale that is used if no other
+will have the flag `default` set to true and is the locale that is used in the content delivery api if no other
 locale was specified for the request (e.g. when reading an entry).
 
 + Request
@@ -809,9 +813,9 @@ This endpoint returns a single locale with all its metadata.
 
 ### Update a locale [PUT]
 
-Putting a payload against a single entities endpoint allows an update of a locale.
+Putting a payload against the single entity endpoint allows the update of a locale.
 
-Please note that renaming a locale changes the responses for upcoming requests, which
+Please note that modifying the `code` of a locale changes the responses for upcoming requests, which
 might break your existing code.
 
 Finally, it is not possible to change what is the default locale of a space, as these are
@@ -1556,6 +1560,7 @@ This endpoint allows the deletion of a space membership. It only affects the acc
 
 - name: `English (United States)` (string, required)
 - code: `en-US` (string, required)
+- fallback_code: `en-US` (string) - Defaults to the default locale in the space
 - optional: false (boolean) - Declare a locale as optional in localized fields
 
 ### Locale Complete
