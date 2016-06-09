@@ -60,10 +60,10 @@ $(CPA_BLUEPRINT): outdir cpa.apib
 prepare: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
 
 preview: check_apiary_token prepare
-	#$(APIARY) preview --path=$(CDA_BLUEPRINT)
+	$(APIARY) preview --path=$(CDA_BLUEPRINT)
 	$(APIARY) preview --path=$(CMA_BLUEPRINT)
-	#$(APIARY) preview --path=$(CPA_BLUEPRINT)
-	#$(APIARY) preview --path=$(IMAGES_BLUEPRINT)
+	$(APIARY) preview --path=$(CPA_BLUEPRINT)
+	$(APIARY) preview --path=$(IMAGES_BLUEPRINT)
 
 publish: check_apiary_token check_ci_var install prepare publish_docs notify_slack
 
