@@ -27,7 +27,7 @@ This widget displays a chessboard and stores the board position as a JSON object
 [View on GitHub](https://github.com/contentful/widget-sdk/tree/master/examples/chessboard)
 
 {: .img}
-![Chessboard](chessboard.png)
+![Chessboard](chessboard.gif)
 
 ### Slug generator
 This widget will automatically generate its values from an entries title field. For example typing “Hello World” into the title field will set the widgets input field to “hello-world”. It will also check the uniqueness of the slug across a customizable list of content types.<br>
