@@ -2,13 +2,9 @@
 page: :docsUiExtensions
 ---
 
-UI extensions allows you to extend the Contentful web app's entry editor, so that you can build plugins that meet your specific content editing or content management needs. It operates on top of any of our current field types, and gives you the power to manipulate its data through an iframe where you can embed custom functionality, styling, integrations or workflows.
+The UI Extensions SDK allows you to customize and extend the functionality of Contentful Web Application's entry editor. The editor itself is a container for many "widgets" that enable editors to manipulate the content stored in content fields. Widgets' complexity varies. They can be simple user interface controls, such as a dropdown, or more complex micro web applications such as our Markdown editor. They are decoupled entities from field types, and can be reused (for example using a dropdown widget to edit number or text fields).
 
-UI extensions is still in development and therefore it is not encouraged to use it to build business critical solutions as it is likely to change. The purpose of making it available early is to provide early access to upcoming features and make our roadmap more transparent to users, as well as to collect early feedback before releasing, and committing to support, a brand new API.<br>
-[View on GitHub](https://github.com/contentful/widget-sdk)
-
-There also a command line tool (CLI) to simplify the management tasks associated with custom widgets.<br>
-[View on GitHub](https://github.com/contentful/contentful-widget-cli)
+Previously, the Contentful Web Application only offered our core platform widgets as options to manipulate fields' content. Now, with the UI Extensions SDK it is possible to create custom widgets to further personalize your users' needs. Core widgets and custom widgets are both built on top of the same API, making them virtually identical in functionality with the main difference being that custom widgets are rendered inside a secure iframe.
 
 ## Examples
 
