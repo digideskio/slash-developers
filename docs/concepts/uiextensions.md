@@ -12,7 +12,7 @@ Previously, the Contentful Web Application only offered our core platform widget
 Basic widget that helps you get started with developing. Uses a dropdown to change the value of a number field and makes some CMA requests.<br>
 [View on GitHub](https://github.com/contentful/widget-sdk/tree/master/examples/rating-dropdown)
 
-{: .img}
+
 ![Basic rating dropdown](basic-rating-dropdown.png)
 
 ### Rich text editor
